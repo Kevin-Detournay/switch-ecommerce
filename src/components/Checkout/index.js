@@ -52,7 +52,7 @@ const Checkout = ({
     /* sending a request payment to the backend for security,
    then back responds with a client secret */
 
-    const response = await axios.post('https://switch-ecommerce.herokuapp.com/v1/pay', {
+    const response = await axios.post('https://switchecommerce.herokuapp.com/v1/pay', {
       email: user.email,
       total,
     });

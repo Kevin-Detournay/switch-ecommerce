@@ -15,7 +15,7 @@ const createOneArticle = (store) => (next) => (action) => {
 
       // geting the token from the store, admin token needed
       const { token } = store.getState().auth;
-      axios.post('https://switch-ecommerce.herokuapp.com/v1/article/', {
+      axios.post('https://switchecommerce.herokuapp.com/v1/article/', {
 
         ...article,
       }, { headers: { Authorization: `Bearer ${token}` } })

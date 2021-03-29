@@ -11,7 +11,7 @@ const getLogin = (store) => (next) => (action) => {
           // i post email and password to the API and i receive an array, with Id and Token.
           store.dispatch(authIsLoading(true));
           const { email, password } = store.getState().auth;
-          const auth = await axios.post('https://switch-ecommerce.herokuapp.com/v1/user', {
+          const auth = await axios.post('https://switchecommerce.herokuapp.com/v1/user', {
             email,
             password,
           });
@@ -22,7 +22,7 @@ const getLogin = (store) => (next) => (action) => {
             return;
           }
           // i Get user info from Api using token in header:
-          const response = await axios.get(`https://switch-ecommerce.herokuapp.com/v1/user/${auth.data[1]}`, { headers: { Authorization: `Bearer ${auth.data[0]}` } });
+          const response = await axios.get(`https://switchecommerce.herokuapp.com/v1/user/${auth.data[1]}`, { headers: { Authorization: `Bearer ${auth.data[0]}` } });
 
           // i put user info and the token into the store formatting the shape i want
           const user = {

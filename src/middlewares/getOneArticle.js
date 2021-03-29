@@ -14,7 +14,7 @@ const getOneArticles = (store) => (next) => (action) => {
     case GET_ONE_ARTICLE:
       store.dispatch(articleLoading(true));
 
-      axios.get(`https://switch-ecommerce.herokuapp.com/v1/article/${action.id}`)
+      axios.get(`https://switchecommerce.herokuapp.com/v1/article/${action.id}`)
         .then(
           (response) => {
             const article = response.data;
@@ -49,7 +49,7 @@ const getOneArticles = (store) => (next) => (action) => {
       // getting the token from the store
 
       const { token } = store.getState().auth;// admin token needed
-      axios.put(`https://switch-ecommerce.herokuapp.com/v1/article/${reqid}`,
+      axios.put(`https://switchecommerce.herokuapp.com/v1/article/${reqid}`,
         { ...reqArticle }, { headers: { Authorization: `Bearer ${token}` } })
         .then(() => {
           /* after modifing the article ,
@@ -70,7 +70,7 @@ const getOneArticles = (store) => (next) => (action) => {
       const { article } = store.getState().article;
       const { token } = store.getState().auth; // admin token needed
       const reqid = article.id;
-      axios.delete(`https://switch-ecommerce.herokuapp.com/v1/article/${reqid}`, { headers: { Authorization: `Bearer ${token}` } })
+      axios.delete(`https://switchecommerce.herokuapp.com/v1/article/${reqid}`, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
           /* to avoid the 404 after the article has been deleted,
           i redirect to /admin then we can see all the articles

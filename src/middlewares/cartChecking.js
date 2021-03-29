@@ -21,7 +21,7 @@ const checkingCart = (store) => (next) => (action) => {
       store.dispatch(setCartMessage(''));
 
       // for each article in the cart, I request api to get the current stock for each size
-      const promises = action.articles.map((article) => axios.get(`https://switch-ecommerce.herokuapp.com/v1/article/${article.id}`));
+      const promises = action.articles.map((article) => axios.get(`https://switchecommerce.herokuapp.com/v1/article/${article.id}`));
       Promise.all(promises)
         .then((responses) => {
           responses.forEach((response, index) => {
